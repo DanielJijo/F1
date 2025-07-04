@@ -124,12 +124,14 @@ export default function F1Homepage() {
 
           <p className="text-xl md:text-2xl text-gray-200 mb-12 animate-slide-up-delay drop-shadow-lg">Your Unofficial F1 Companion</p>
 
-          <Button
-            size="lg"
-            className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white px-12 py-4 text-lg font-semibold rounded-full transition-all duration-300 transform hover:scale-105 animate-slide-up-delay-2 drop-shadow-lg"
-          >
-            Explore Season
-          </Button>
+          <a href="/behind-the-wheels">
+            <Button
+              size="lg"
+              className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white px-12 py-4 text-lg font-semibold rounded-full transition-all duration-300 transform hover:scale-105 animate-slide-up-delay-2 drop-shadow-lg"
+            >
+              Behind the Wheels
+            </Button>
+          </a>
         </div>
 
         {/* Scroll Indicator */}

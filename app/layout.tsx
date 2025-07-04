@@ -4,8 +4,8 @@ import PageTransition from "@/components/PageTransition";
 
 export const metadata: Metadata = {
   title: 'F1-x',
-  description: 'Created with v0',
-  generator: 'v0.dev',
+  description: "An F1 showcase site featuring deep insights like why F1 isn't in India.",
+  generator: ':vs',
 }
 
 export default function RootLayout({
