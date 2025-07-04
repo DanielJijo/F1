@@ -1,0 +1,188 @@
+"use client"
+
+import { useState, useEffect } from "react"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent } from "@/components/ui/card"
+import { Trophy, Zap, Target, Menu, X } from "lucide-react"
+import DriversGrid from "./components/drivers-grid"
+import Link from "next/link"
+
+export default function F1Homepage() {
+  const [showSplash, setShowSplash] = useState(true)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowSplash(false)
+    }, 3000)
+    return () => clearTimeout(timer)
+  }, [])
+
+  const stats = [
+    {
+      icon: <Trophy className="w-8 h-8" />,
+      title: "Total Races",
+      value: "23",
+      color: "text-red-500", // Ferrari red
+      delay: "0s",
+    },
+    {
+      icon: <Zap className="w-8 h-8" />,
+      title: "Fastest Lap",
+      value: "1:12.345",
+      color: "text-blue-500", // Red Bull blue
+      delay: "0.2s",
+    },
+    {
+      icon: <Target className="w-8 h-8" />,
+      title: "Most Wins",
+      value: "Max Verstappen",
+      color: "text-green-500", // Mercedes green
+      delay: "0.4s",
+    },
+  ]
+
+  const navLinks = ["Home", "Drivers", "Teams", "Records", "Map"]
+
+  if (showSplash) {
+    return (
+      <div className="fixed inset-0 bg-black flex items-center justify-center z-50">
+        <div className="text-center">
+          <div className="text-8xl md:text-9xl font-black text-white mb-4 animate-fade-in">F1</div>
+          <div className="w-24 h-1 bg-gradient-to-r from-red-500 via-blue-500 to-green-500 mx-auto animate-pulse"></div>
+        </div>
+      </div>
+    )
+  }
+
+  return (
+    <div className="min-h-screen bg-black text-white overflow-x-hidden">
+      {/* Sticky Navigation */}
+      <nav className="sticky top-0 z-50 bg-black/80 backdrop-blur-md border-b border-gray-800">
+        <div className="container mx-auto px-4">
+          <div className="flex items-center justify-between h-16">
+            <div className="text-2xl font-bold">
+              <span className="text-red-500">F</span>
+              <span className="text-blue-500">1</span>
+              <span className="text-green-500">-X</span>
+            </div>
+
+            {/* Desktop Navigation */}
+            <div className="hidden md:flex space-x-8">
+              {navLinks.map((link, index) => (
+                <Link
+                  key={link}
+                  href={link === "Home" ? "/" : `/${link.toLowerCase()}`}
+                  className="text-gray-300 hover:text-white transition-colors duration-300 relative group"
+                >
+                  {link}
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-red-500 via-blue-500 to-green-500 group-hover:w-full transition-all duration-300"></span>
+                </Link>
+              ))}
+            </div>
+
+            {/* Mobile Menu Button */}
+            <button className="md:hidden text-white" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
+              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+          </div>
+
+          {/* Mobile Navigation */}
+          {mobileMenuOpen && (
+            <div className="md:hidden py-4 border-t border-gray-800">
+              {navLinks.map((link) => (
+                <Link
+                  key={link}
+                  href={link === "Home" ? "/" : `/${link.toLowerCase()}`}
+                  className="block py-2 text-gray-300 hover:text-white transition-colors duration-300"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {link}
+                </Link>
+              ))}
+            </div>
+          )}
+        </div>
+      </nav>
+
+      {/* Hero Section */}
+      <section className="relative min-h-screen flex items-center justify-center">
+        {/* Background Image with Blur */}
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: `url('/placeholder.svg?height=1080&width=1920')`,
+            filter: "blur(8px) brightness(0.3)",
+          }}
+        />
+
+        {/* Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black/80" />
+
+        {/* Hero Content */}
+        <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-black mb-6 animate-slide-up text-white">
+            Welcome to{" "}
+            <span
+              className="bg-gradient-to-r from-pink-500 via-blue-500 to-green-500 bg-clip-text text-transparent"
+              style={{ WebkitBackgroundClip: 'text' }}
+            >
+              FormulaOne-X
+            </span>
+          </h1>
+
+          <p className="text-xl md:text-2xl text-gray-300 mb-12 animate-slide-up-delay">Your Unofficial F1 Companion</p>
+
+          <Button
+            size="lg"
+            className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white px-12 py-4 text-lg font-semibold rounded-full transition-all duration-300 transform hover:scale-105 animate-slide-up-delay-2"
+          >
+            Explore Season
+          </Button>
+        </div>
+
+        {/* Scroll Indicator */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+          <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
+            <div className="w-1 h-3 bg-white/50 rounded-full mt-2 animate-pulse"></div>
+          </div>
+        </div>
+      </section>
+
+      {/* Stats Section */}
+      <section className="py-20 px-4">
+        <div className="container mx-auto max-w-6xl">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {stats.map((stat, index) => (
+              <Card
+                key={stat.title}
+                className="bg-gray-900/50 border-gray-800 backdrop-blur-sm hover:bg-gray-800/50 transition-all duration-500 transform hover:scale-105 animate-fade-in-up"
+                style={{ animationDelay: stat.delay }}
+              >
+                <CardContent className="p-8 text-center">
+                  <div className={`${stat.color} mb-4 flex justify-center animate-pulse`}>{stat.icon}</div>
+                  <h3 className="text-2xl md:text-3xl font-bold mb-2 text-white">{stat.value}</h3>
+                  <p className="text-gray-400 text-lg">{stat.title}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Drivers Section */}
+      <section className="py-20 px-4 bg-gradient-to-b from-black to-gray-900">
+        <div className="container mx-auto max-w-7xl">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-6xl font-black mb-4 bg-gradient-to-r from-red-500 via-blue-500 to-green-500 bg-clip-text text-transparent">
+              2024 DRIVERS
+            </h2>
+            <p className="text-xl text-gray-400">Meet the gladiators of the grid</p>
+          </div>
+
+          <DriversGrid />
+        </div>
+      </section>
+    </div>
+  )
+}
