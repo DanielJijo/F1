@@ -56,7 +56,15 @@ export default function F1Homepage() {
   }
 
   return (
-    <div className="min-h-screen bg-black text-white overflow-x-hidden">
+    <div
+      className="min-h-screen bg-black text-white overflow-x-hidden relative"
+      style={{
+        backgroundImage: "linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.85)), url('/backgrounds/redbull.jpg')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+      }}
+    >
       {/* Sticky Navigation */}
       <nav className="sticky top-0 z-50 bg-black/80 backdrop-blur-md border-b border-gray-800">
         <div className="container mx-auto px-4">
@@ -107,21 +115,9 @@ export default function F1Homepage() {
 
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center">
-        {/* Background Image with Blur */}
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundImage: `url('/placeholder.svg?height=1080&width=1920')`,
-            filter: "blur(8px) brightness(0.3)",
-          }}
-        />
-
-        {/* Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black/80" />
-
         {/* Hero Content */}
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-black mb-6 animate-slide-up text-white">
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-black mb-6 animate-slide-up text-white drop-shadow-xl">
             Welcome to{" "}
             <span
               className="bg-gradient-to-r from-pink-500 via-blue-500 to-green-500 bg-clip-text text-transparent"
@@ -131,11 +127,11 @@ export default function F1Homepage() {
             </span>
           </h1>
 
-          <p className="text-xl md:text-2xl text-gray-300 mb-12 animate-slide-up-delay">Your Unofficial F1 Companion</p>
+          <p className="text-xl md:text-2xl text-gray-200 mb-12 animate-slide-up-delay drop-shadow-lg">Your Unofficial F1 Companion</p>
 
           <Button
             size="lg"
-            className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white px-12 py-4 text-lg font-semibold rounded-full transition-all duration-300 transform hover:scale-105 animate-slide-up-delay-2"
+            className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white px-12 py-4 text-lg font-semibold rounded-full transition-all duration-300 transform hover:scale-105 animate-slide-up-delay-2 drop-shadow-lg"
           >
             Explore Season
           </Button>
