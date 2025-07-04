@@ -3,7 +3,7 @@ import './globals.css'
 import PageTransition from "@/components/PageTransition";
 
 export const metadata: Metadata = {
-  title: 'v0 App',
+  title: 'F1-x',
   description: 'Created with v0',
   generator: 'v0.dev',
 }
