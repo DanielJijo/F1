@@ -6,6 +6,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Trophy, Zap, Target, Menu, X } from "lucide-react"
 import DriversGrid from "./components/drivers-grid"
 import Link from "next/link"
+import AnimatedText from "@/components/AnimatedText"
 
 export default function F1Homepage() {
   const [showSplash, setShowSplash] = useState(true)
@@ -118,7 +119,7 @@ export default function F1Homepage() {
         {/* Hero Content */}
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-black mb-6 animate-slide-up text-white drop-shadow-xl">
-            F1 IS A SPORT, NOT AN ENTERTAINMENT
+            <AnimatedText text="F1 IS A SPORT, NOT AN ENTERTAINMENT" />
           </h1>
 
           <p className="text-xl md:text-2xl text-gray-200 mb-12 animate-slide-up-delay drop-shadow-lg">Your Unofficial F1 Companion</p>

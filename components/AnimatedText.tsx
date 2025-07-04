@@ -25,9 +25,9 @@ export default function AnimatedText({ text }: { text: string }) {
         scale: 1,
         opacity: 1,
         color: "#fff",
-        stagger: 0.1,
+        stagger: 0.05,
         ease: "power2.out",
-        duration: 1.5,
+        duration: 0.7,
       }
     );
   }, []);
@@ -35,25 +35,31 @@ export default function AnimatedText({ text }: { text: string }) {
   return (
     <h1
       ref={ref}
-      className="text-5xl md:text-7xl lg:text-8xl font-black mb-6 animate-slide-up text-white drop-shadow-xl text-center"
+      className="text-5xl md:text-7xl lg:text-8xl font-semibold opacity-80 mb-6 animate-slide-up text-gray-300 drop-shadow-xl text-center"
     >
-      {text.split(/(SPORT, )/).map((part, idx) =>
-        part === "SPORT, " ? (
+      {(() => {
+        // Custom split for three lines
+        const line1 = "F1 IS A SPORT,";
+        const line2 = "NOT AN";
+        const line3 = "ENTERTAINMENT.";
+        return [line1, line2, line3].map((line, idx) => (
           <span key={idx} className="inline-block">
-            {part}
-            <span className="hidden md:inline"><br/></span>
-            <span className="inline md:hidden"> </span>
+            {line.split("").map((char, i) =>
+              char === " " ? (
+                <span key={i + "-" + idx} className="inline-block">&nbsp;</span>
+              ) : (
+                <span key={i + "-" + idx} className="inline-block">{char}</span>
+              )
+            )}
+            {idx < 2 && (
+              <>
+                <span className="hidden md:inline"><br/></span>
+                <span className="inline md:hidden"> </span>
+              </>
+            )}
           </span>
-        ) : (
-          part.split("").map((char, i) =>
-            char === " " ? (
-              <span key={i + "-" + idx} className="inline-block">&nbsp;</span>
-            ) : (
-              <span key={i + "-" + idx} className="inline-block">{char}</span>
-            )
-          )
-        )
-      )}
+        ));
+      })()}
     </h1>
   );
 } 
