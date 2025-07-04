@@ -41,8 +41,8 @@ export default function AnimatedText({ text }: { text: string }) {
         part === "SPORT, " ? (
           <span key={idx} className="inline-block">
             {part}
-            <span className="hidden lg:inline"><br/></span>
-            <span className="inline lg:hidden"> </span>
+            <span className="hidden md:inline"><br/></span>
+            <span className="inline md:hidden"> </span>
           </span>
         ) : (
           part.split("").map((char, i) =>
