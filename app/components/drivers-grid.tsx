@@ -132,7 +132,7 @@ export default function DriversGrid() {
         {drivers.map((driver, index) => (
           <Card
             key={driver.id}
-            className={`group relative overflow-hidden bg-gray-900/50 border-gray-800 backdrop-blur-sm cursor-pointer transition-all duration-500 hover:scale-105 hover:bg-gray-800/70 animate-fade-in-up ${
+            className={`group relative overflow-hidden bg-gray-900/50 border-gray-800 backdrop-blur-sm cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-xl hover:bg-gray-800/70 animate-fade-in-up ${
               selectedDriver?.id === driver.id ? "ring-2 ring-white/50" : ""
             }`}
             style={{ animationDelay: `${index * 0.1}s` }}

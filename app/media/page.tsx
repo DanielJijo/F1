@@ -1,8 +1,18 @@
 "use client"
 
 import Link from "next/link"
+import GooeyNav from "@/components/GooeyNav/GooeyNav"
 
 export default function MediaPage() {
+  const navItems = [
+    { label: "Home", href: "/" },
+    { label: "Drivers", href: "/drivers" },
+    { label: "Teams", href: "/teams" },
+    { label: "Records", href: "/records" },
+    { label: "Map", href: "/map" },
+    { label: "Media", href: "/media" },
+  ]
+
   return (
     <div className="min-h-screen bg-black text-white">
       {/* Navigation */}
@@ -14,25 +24,10 @@ export default function MediaPage() {
               <span className="text-blue-500">1</span>
               <span className="text-green-500">-X</span>
             </Link>
-            <div className="flex space-x-8">
-              <Link href="/" className="text-gray-300 hover:text-white transition-colors duration-300">
-                Home
-              </Link>
-              <Link href="/drivers" className="text-gray-300 hover:text-white transition-colors duration-300">
-                Drivers
-              </Link>
-              <Link href="/teams" className="text-gray-300 hover:text-white transition-colors duration-300">
-                Teams
-              </Link>
-              <Link href="/records" className="text-gray-300 hover:text-white transition-colors duration-300">
-                Records
-              </Link>
-              <Link href="/map" className="text-gray-300 hover:text-white transition-colors duration-300">
-                Map
-              </Link>
-              <Link href="/media" className="text-white font-semibold">
-                Media
-              </Link>
+            
+            {/* Desktop Navigation - GooeyNav */}
+            <div className="hidden md:flex items-center justify-center flex-1">
+              <GooeyNav items={navItems} />
             </div>
           </div>
         </div>

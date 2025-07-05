@@ -5,6 +5,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { MapPin, Calendar, Clock, Trophy, Zap } from "lucide-react"
 import Link from "next/link"
+import GooeyNav from "@/components/GooeyNav/GooeyNav"
 
 interface Race {
   id: number
@@ -106,6 +107,15 @@ export default function MapPage() {
   const [selectedRace, setSelectedRace] = useState<Race | null>(null)
   const [filter, setFilter] = useState<"all" | "completed" | "upcoming">("all")
 
+  const navItems = [
+    { label: "Home", href: "/" },
+    { label: "Drivers", href: "/drivers" },
+    { label: "Teams", href: "/teams" },
+    { label: "Records", href: "/records" },
+    { label: "Map", href: "/map" },
+    { label: "Media", href: "/media" },
+  ]
+
   const filteredRaces = races.filter((race) => filter === "all" || race.status === filter)
 
   const getStatusColor = (status: Race["status"]) => {
@@ -145,22 +155,10 @@ export default function MapPage() {
               <span className="text-blue-500">1</span>
               <span className="text-green-500">-X</span>
             </Link>
-            <div className="flex space-x-8">
-              <Link href="/" className="text-gray-300 hover:text-white transition-colors duration-300">
-                Home
-              </Link>
-              <Link href="/drivers" className="text-gray-300 hover:text-white transition-colors duration-300">
-                Drivers
-              </Link>
-              <Link href="/teams" className="text-gray-300 hover:text-white transition-colors duration-300">
-                Teams
-              </Link>
-              <Link href="/records" className="text-gray-300 hover:text-white transition-colors duration-300">
-                Records
-              </Link>
-              <Link href="/map" className="text-white font-semibold">
-                Map
-              </Link>
+            
+            {/* Desktop Navigation - GooeyNav */}
+            <div className="hidden md:flex items-center justify-center flex-1">
+              <GooeyNav items={navItems} />
             </div>
           </div>
         </div>
@@ -168,8 +166,8 @@ export default function MapPage() {
       {/* Header */}
       <div className="pt-16 pb-8 bg-black">
         <div className="container mx-auto px-4 text-center">
-          <div className="inline-block w-full md:w-auto px-6 py-4 rounded-xl mx-auto mb-4 bg-gradient-to-r from-pink-500 via-blue-400 to-green-400">
-            <h1 className="text-5xl md:text-7xl font-black mb-0 text-black drop-shadow-lg">
+          <div className="inline-block w-full md:w-auto px-6 py-4 rounded-xl mx-auto mb-4 bg-red-600">
+            <h1 className="text-5xl md:text-7xl font-black mb-0 text-white drop-shadow-lg">
               2024 CALENDAR
             </h1>
           </div>

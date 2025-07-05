@@ -7,6 +7,7 @@ import { Trophy, Zap, Target, Menu, X } from "lucide-react"
 import DriversGrid from "./components/drivers-grid"
 import Link from "next/link"
 import AnimatedText from "@/components/AnimatedText"
+import GooeyNav from "@/components/GooeyNav/GooeyNav"
 
 export default function F1Homepage() {
   const [showSplash, setShowSplash] = useState(true)
@@ -43,7 +44,14 @@ export default function F1Homepage() {
     },
   ]
 
-  const navLinks = ["Home", "Drivers", "Teams", "Records", "Map", "Media"]
+  const navItems = [
+    { label: "Home", href: "/" },
+    { label: "Drivers", href: "/drivers" },
+    { label: "Teams", href: "/teams" },
+    { label: "Records", href: "/records" },
+    { label: "Map", href: "/map" },
+    { label: "Media", href: "/media" },
+  ]
 
   if (showSplash) {
     return (
@@ -76,18 +84,9 @@ export default function F1Homepage() {
               <span className="text-green-500">-X</span>
             </div>
 
-            {/* Desktop Navigation */}
-            <div className="hidden md:flex space-x-8">
-              {navLinks.map((link, index) => (
-                <Link
-                  key={link}
-                  href={link === "Home" ? "/" : `/${link.toLowerCase()}`}
-                  className="text-gray-300 hover:text-white transition-colors duration-300 relative group"
-                >
-                  {link}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-red-500 via-blue-500 to-green-500 group-hover:w-full transition-all duration-300"></span>
-                </Link>
-              ))}
+            {/* Desktop Navigation - GooeyNav */}
+            <div className="hidden md:flex items-center justify-center flex-1">
+              <GooeyNav items={navItems} />
             </div>
 
             {/* Mobile Menu Button */}
@@ -99,14 +98,14 @@ export default function F1Homepage() {
           {/* Mobile Navigation */}
           {mobileMenuOpen && (
             <div className="md:hidden py-4 border-t border-gray-800">
-              {navLinks.map((link) => (
+              {navItems.map((item) => (
                 <Link
-                  key={link}
-                  href={link === "Home" ? "/" : `/${link.toLowerCase()}`}
+                  key={item.label}
+                  href={item.href}
                   className="block py-2 text-gray-300 hover:text-white transition-colors duration-300"
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  {link}
+                  {item.label}
                 </Link>
               ))}
             </div>

@@ -4,6 +4,7 @@ import { useState } from "react"
 import { Card, CardContent } from "@/components/ui/card"
 import { Trophy, Users, Settings } from "lucide-react"
 import Link from "next/link"
+import GooeyNav from "@/components/GooeyNav/GooeyNav"
 
 interface Team {
   id: number
@@ -128,6 +129,15 @@ const teams: Team[] = [
 export default function TeamsPage() {
   const [selectedTeam, setSelectedTeam] = useState<Team | null>(null)
 
+  const navItems = [
+    { label: "Home", href: "/" },
+    { label: "Drivers", href: "/drivers" },
+    { label: "Teams", href: "/teams" },
+    { label: "Records", href: "/records" },
+    { label: "Map", href: "/map" },
+    { label: "Media", href: "/media" },
+  ]
+
   return (
     <div className="min-h-screen bg-black text-white">
       {/* Navigation */}
@@ -139,22 +149,10 @@ export default function TeamsPage() {
               <span className="text-blue-500">1</span>
               <span className="text-green-500">-X</span>
             </Link>
-            <div className="flex space-x-8">
-              <Link href="/" className="text-gray-300 hover:text-white transition-colors duration-300">
-                Home
-              </Link>
-              <Link href="/drivers" className="text-gray-300 hover:text-white transition-colors duration-300">
-                Drivers
-              </Link>
-              <Link href="/teams" className="text-white font-semibold">
-                Teams
-              </Link>
-              <Link href="/records" className="text-gray-300 hover:text-white transition-colors duration-300">
-                Records
-              </Link>
-              <Link href="/map" className="text-gray-300 hover:text-white transition-colors duration-300">
-                Map
-              </Link>
+            
+            {/* Desktop Navigation - GooeyNav */}
+            <div className="hidden md:flex items-center justify-center flex-1">
+              <GooeyNav items={navItems} />
             </div>
           </div>
         </div>
@@ -177,7 +175,7 @@ export default function TeamsPage() {
           {teams.map((team, index) => (
             <Card
               key={team.id}
-              className="group bg-gray-900/50 border-gray-800 backdrop-blur-sm cursor-pointer transition-all duration-500 hover:scale-105 hover:bg-gray-800/70 animate-fade-in-up"
+              className="group bg-gray-900/50 border-gray-800 backdrop-blur-sm cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-xl hover:bg-gray-800/70 animate-fade-in-up"
               style={{ animationDelay: `${index * 0.2}s` }}
               onClick={() => setSelectedTeam(team)}
             >

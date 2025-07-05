@@ -7,6 +7,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Search, Trophy, Zap, Target, Flag } from "lucide-react"
 import Link from "next/link"
 import F1GoatPoll from "@/components/f1-goat-poll"
+import GooeyNav from "@/components/GooeyNav/GooeyNav"
 
 interface Driver {
   id: number
@@ -190,6 +191,15 @@ export default function DriversPage() {
 
   const teams = Array.from(new Set(drivers.map((d) => d.team)))
 
+  const navItems = [
+    { label: "Home", href: "/" },
+    { label: "Drivers", href: "/drivers" },
+    { label: "Teams", href: "/teams" },
+    { label: "Records", href: "/records" },
+    { label: "Map", href: "/map" },
+    { label: "Media", href: "/media" },
+  ]
+
   const filteredDrivers = drivers.filter((driver) => {
     const matchesSearch = driver.name.toLowerCase().includes(searchTerm.toLowerCase())
     const matchesTeam = selectedTeam === "all" || driver.team === selectedTeam
@@ -207,25 +217,10 @@ export default function DriversPage() {
               <span className="text-blue-500">1</span>
               <span className="text-green-500">-X</span>
             </Link>
-            <div className="flex space-x-8">
-              <Link href="/" className="text-gray-300 hover:text-white transition-colors duration-300">
-                Home
-              </Link>
-              <Link href="/drivers" className="text-white font-semibold">
-                Drivers
-              </Link>
-              <Link href="/teams" className="text-gray-300 hover:text-white transition-colors duration-300">
-                Teams
-              </Link>
-              <Link href="/records" className="text-gray-300 hover:text-white transition-colors duration-300">
-                Records
-              </Link>
-              <Link href="/map" className="text-gray-300 hover:text-white transition-colors duration-300">
-                Map
-              </Link>
-              <Link href="/media" className="text-gray-300 hover:text-white transition-colors duration-300">
-                Media
-              </Link>
+            
+            {/* Desktop Navigation - GooeyNav */}
+            <div className="hidden md:flex items-center justify-center flex-1">
+              <GooeyNav items={navItems} />
             </div>
           </div>
         </div>

@@ -5,8 +5,9 @@ import type React from "react"
 import { useState } from "react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Trophy, Zap, Flag, Clock, Target, Crown } from "lucide-react"
+import { Trophy, Users, Flag, Clock, Target, Zap, Crown } from "lucide-react"
 import Link from "next/link"
+import GooeyNav from "@/components/GooeyNav/GooeyNav"
 
 interface Record {
   title: string
@@ -133,6 +134,15 @@ const trackRecords: Record[] = [
 export default function RecordsPage() {
   const [activeTab, setActiveTab] = useState("drivers")
 
+  const navItems = [
+    { label: "Home", href: "/" },
+    { label: "Drivers", href: "/drivers" },
+    { label: "Teams", href: "/teams" },
+    { label: "Records", href: "/records" },
+    { label: "Map", href: "/map" },
+    { label: "Media", href: "/media" },
+  ]
+
   const RecordCard = ({ record, index }: { record: Record; index: number }) => (
     <Card
       className="bg-gray-900/50 border-gray-800 backdrop-blur-sm hover:bg-gray-800/70 transition-all duration-500 hover:scale-105 animate-fade-in-up"
@@ -166,22 +176,10 @@ export default function RecordsPage() {
               <span className="text-blue-500">1</span>
               <span className="text-green-500">-X</span>
             </Link>
-            <div className="flex space-x-8">
-              <Link href="/" className="text-gray-300 hover:text-white transition-colors duration-300">
-                Home
-              </Link>
-              <Link href="/drivers" className="text-gray-300 hover:text-white transition-colors duration-300">
-                Drivers
-              </Link>
-              <Link href="/teams" className="text-gray-300 hover:text-white transition-colors duration-300">
-                Teams
-              </Link>
-              <Link href="/records" className="text-white font-semibold">
-                Records
-              </Link>
-              <Link href="/map" className="text-gray-300 hover:text-white transition-colors duration-300">
-                Map
-              </Link>
+            
+            {/* Desktop Navigation - GooeyNav */}
+            <div className="hidden md:flex items-center justify-center flex-1">
+              <GooeyNav items={navItems} />
             </div>
           </div>
         </div>
