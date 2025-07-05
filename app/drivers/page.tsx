@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Search, Trophy, Zap, Target, Flag } from "lucide-react"
 import Link from "next/link"
+import F1GoatPoll from "@/components/f1-goat-poll"
 
 interface Driver {
   id: number
@@ -222,6 +223,9 @@ export default function DriversPage() {
               <Link href="/map" className="text-gray-300 hover:text-white transition-colors duration-300">
                 Map
               </Link>
+              <Link href="/media" className="text-gray-300 hover:text-white transition-colors duration-300">
+                Media
+              </Link>
             </div>
           </div>
         </div>
@@ -230,8 +234,8 @@ export default function DriversPage() {
       {/* Header */}
       <div className="py-20 bg-black">
         <div className="container mx-auto px-4 text-center">
-          <div className="inline-block w-full md:w-auto px-6 py-4 rounded-xl mx-auto mb-4 bg-gradient-to-r from-red-500 via-blue-500 to-green-500">
-            <h1 className="text-5xl md:text-7xl font-black mb-0 text-black drop-shadow-lg">
+          <div className="inline-block w-full md:w-auto px-6 py-4 rounded-xl mx-auto mb-4 bg-red-600">
+            <h1 className="text-5xl md:text-7xl font-black mb-0 text-white drop-shadow-lg">
               2024 DRIVERS
             </h1>
           </div>
@@ -248,14 +252,14 @@ export default function DriversPage() {
               placeholder="Search drivers..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="pl-10 bg-gray-900 border-gray-700 text-white"
+              className="pl-10 bg-gray-800 border-gray-700 text-white"
             />
           </div>
           <Select value={selectedTeam} onValueChange={setSelectedTeam}>
-            <SelectTrigger className="w-full md:w-48 bg-gray-900 border-gray-700 text-white">
+            <SelectTrigger className="w-full md:w-48 bg-gray-800 border-gray-700 text-white">
               <SelectValue placeholder="Filter by team" />
             </SelectTrigger>
-            <SelectContent className="bg-gray-900 border-gray-700">
+            <SelectContent className="bg-gray-800 border-gray-700">
               <SelectItem value="all">All Teams</SelectItem>
               {teams.map((team) => (
                 <SelectItem key={team} value={team}>
@@ -266,12 +270,17 @@ export default function DriversPage() {
           </Select>
         </div>
 
+        {/* F1 GOAT Poll */}
+        <div className="mb-12">
+          <F1GoatPoll />
+        </div>
+
         {/* Drivers Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {filteredDrivers.map((driver, index) => (
             <Card
               key={driver.id}
-              className="group bg-gray-900/50 border-gray-800 backdrop-blur-sm cursor-pointer transition-all duration-500 hover:scale-105 hover:bg-gray-800/70 animate-fade-in-up"
+              className="group bg-gray-800/50 border border-gray-700 backdrop-blur-sm cursor-pointer transition-all duration-500 hover:scale-105 hover:bg-gray-700/50 animate-fade-in-up"
               style={{ animationDelay: `${index * 0.1}s` }}
               onClick={() => setSelectedDriver(driver)}
             >
@@ -337,12 +346,12 @@ export default function DriversPage() {
       {/* Driver Detail Modal */}
       {selectedDriver && (
         <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-fade-in">
-          <Card className="w-full max-w-6xl bg-gray-900 border-gray-700 max-h-[90vh] overflow-y-auto">
+          <Card className="w-full max-w-6xl bg-gray-800 border border-gray-700 max-h-[90vh] overflow-y-auto">
             <CardContent className="p-0">
               <div className="relative">
                 <button
                   onClick={() => setSelectedDriver(null)}
-                  className="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-black/50 text-white hover:bg-black/70 transition-colors duration-200 flex items-center justify-center text-xl"
+                  className="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-gray-700 text-white hover:bg-gray-600 transition-colors duration-200 flex items-center justify-center text-xl"
                 >
                   ×
                 </button>

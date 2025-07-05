@@ -43,7 +43,7 @@ export default function F1Homepage() {
     },
   ]
 
-  const navLinks = ["Home", "Drivers", "Teams", "Records", "Map"]
+  const navLinks = ["Home", "Drivers", "Teams", "Records", "Map", "Media"]
 
   if (showSplash) {
     return (
@@ -167,8 +167,8 @@ export default function F1Homepage() {
       <section className="py-20 px-4 bg-gradient-to-b from-black to-gray-900">
         <div className="container mx-auto max-w-7xl">
           <div className="text-center mb-16">
-            <div className="inline-block w-full md:w-auto px-6 py-4 rounded-xl mx-auto mb-4 bg-gradient-to-r from-red-500 via-blue-500 to-green-500">
-              <h2 className="text-4xl md:text-6xl font-black mb-0 text-black drop-shadow-lg">
+            <div className="inline-block w-full md:w-auto px-6 py-4 rounded-xl mx-auto mb-4 bg-red-600">
+              <h2 className="text-4xl md:text-6xl font-black mb-0 text-white drop-shadow-lg">
                 2024 DRIVERS
               </h2>
             </div>

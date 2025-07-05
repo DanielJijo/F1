@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import './globals.css'
-import PageTransition from "@/components/PageTransition";
+import PageTransition from "@/components/page-transition";
 
 export const metadata: Metadata = {
   title: 'F1-x',
@@ -21,8 +21,9 @@ export default function RootLayout({
         <link rel="shortcut icon" href="/favicon.ico" />
       </head>
       <body>
-        <PageTransition />
-        {children}
+        <PageTransition>
+          {children}
+        </PageTransition>
       </body>
     </html>
   )

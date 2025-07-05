@@ -190,8 +190,8 @@ export default function RecordsPage() {
       {/* Header */}
       <div className="py-20 bg-black">
         <div className="container mx-auto px-4 text-center">
-          <div className="inline-block w-full md:w-auto px-6 py-4 rounded-xl mx-auto mb-4 bg-gradient-to-r from-red-500 via-blue-500 to-green-500">
-            <h1 className="text-5xl md:text-7xl font-black mb-0 text-black drop-shadow-lg">
+          <div className="inline-block w-full md:w-auto px-6 py-4 rounded-xl mx-auto mb-4 bg-red-600">
+            <h1 className="text-5xl md:text-7xl font-black mb-0 text-white drop-shadow-lg">
               F1 RECORDS
             </h1>
           </div>
