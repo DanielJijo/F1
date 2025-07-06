@@ -8,58 +8,84 @@ export default function AnimatedText({ text }: { text: string }) {
     if (!ref.current) return;
     const letters = ref.current.querySelectorAll("span");
 
-    gsap.fromTo(
-      letters,
-      {
-        scale: 2,
-        opacity: 0,
-        color: "#00e239",
+    // Reset any existing animations
+    gsap.set(letters, { clearProps: "all" });
+
+    // Initial state - letters are invisible and positioned randomly
+    gsap.set(letters, {
+      opacity: 0,
+      y: gsap.utils.random(-100, 100),
+      x: gsap.utils.random(-50, 50),
+      rotation: gsap.utils.random(-180, 180),
+      scale: 0,
+    });
+
+    // Animate letters into position
+    gsap.to(letters, {
+      opacity: 1,
+      y: 0,
+      x: 0,
+      rotation: 0,
+      scale: 1,
+      duration: 1.2,
+      ease: "back.out(1.7)",
+      stagger: {
+        amount: 1.5,
+        from: "start",
       },
-      {
-        scrollTrigger: {
-          trigger: ref.current,
-          start: "top 80%",
-          end: "top 30%",
-          scrub: true,
-        },
-        scale: 1,
-        opacity: 1,
-        color: "#fff",
-        stagger: 0.05,
-        ease: "power2.out",
-        duration: 0.7,
-      }
-    );
+      delay: 0.5,
+    });
+
+    // Add a subtle hover effect
+    letters.forEach((letter) => {
+      letter.addEventListener("mouseenter", () => {
+        gsap.to(letter, {
+          scale: 1.3,
+          color: "#ef4444",
+          duration: 0.3,
+          ease: "power2.out",
+        });
+      });
+
+      letter.addEventListener("mouseleave", () => {
+        gsap.to(letter, {
+          scale: 1,
+          color: "#ffffff",
+          duration: 0.3,
+          ease: "power2.out",
+        });
+      });
+    });
   }, []);
 
+  // Split text into three specific lines
+  const lines = [
+    "F1 IS SPORT,",
+    "NOT AN",
+    "ENTERTAINMENT"
+  ];
+  
   return (
     <h1
       ref={ref}
-      className="text-5xl md:text-7xl lg:text-8xl font-semibold opacity-80 mb-6 animate-slide-up text-gray-300 drop-shadow-xl text-center"
+      className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 text-white drop-shadow-xl text-center leading-tight uppercase tracking-[0.1em] font-serif"
     >
-      {(() => {
-        // Custom split for three lines
-        const line1 = "F1 IS A SPORT,";
-        const line2 = "NOT AN";
-        const line3 = "ENTERTAINMENT.";
-        return [line1, line2, line3].map((line, idx) => (
-          <span key={idx} className="inline-block">
-            {line.split("").map((char, i) =>
-              char === " " ? (
-                <span key={i + "-" + idx} className="inline-block">&nbsp;</span>
-              ) : (
-                <span key={i + "-" + idx} className="inline-block">{char}</span>
-              )
-            )}
-            {idx < 2 && (
-              <>
-                <span className="hidden md:inline"><br/></span>
-                <span className="inline md:hidden"> </span>
-              </>
-            )}
-          </span>
-        ));
-      })()}
+      {lines.map((line, lineIndex) => (
+        <div key={lineIndex} className="block">
+          {line.split("").map((char, charIndex) => (
+            <span
+              key={`${lineIndex}-${charIndex}`}
+              className="inline-block"
+              style={{ 
+                display: char === " " ? "inline" : "inline-block",
+                marginRight: char === " " ? "0.2em" : "0.05em"
+              }}
+            >
+              {char === " " ? "\u00A0" : char}
+            </span>
+          ))}
+        </div>
+      ))}
     </h1>
   );
 } 

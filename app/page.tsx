@@ -69,8 +69,8 @@ export default function F1Homepage() {
       className="min-h-screen bg-black text-white overflow-x-hidden relative"
       style={{
         backgroundImage: "linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('/backgrounds/redbull.jpg')",
-        backgroundSize: "110%",
-        backgroundPosition: "center top -180px",
+        backgroundSize: typeof window !== 'undefined' && window.innerWidth < 768 ? 'cover' : '110%',
+        backgroundPosition: typeof window !== 'undefined' && window.innerWidth < 768 ? 'center top' : 'center top -180px',
         backgroundRepeat: "no-repeat",
       }}
     >
@@ -118,7 +118,7 @@ export default function F1Homepage() {
         {/* Hero Content */}
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-black mb-6 animate-slide-up text-white drop-shadow-xl">
-            <AnimatedText text="F1 IS A SPORT, NOT AN ENTERTAINMENT" />
+            <AnimatedText text="F1 IS SPORT, NOT AN ENTERTAINMENT" />
           </h1>
 
           <p className="text-xl md:text-2xl text-gray-200 mb-12 animate-slide-up-delay drop-shadow-lg">Your Unofficial F1 Companion</p>
@@ -148,7 +148,7 @@ export default function F1Homepage() {
             {stats.map((stat, index) => (
               <Card
                 key={stat.title}
-                className="bg-gray-900/50 border-gray-800 backdrop-blur-sm hover:bg-gray-800/50 transition-all duration-500 transform hover:scale-105 animate-fade-in-up"
+                className="stats-card bg-gray-900/50 border-gray-800 backdrop-blur-sm hover:bg-gray-800/50 transition-all duration-500 transform hover:scale-105 animate-fade-in-up"
                 style={{ animationDelay: stat.delay }}
               >
                 <CardContent className="p-8 text-center">
@@ -168,10 +168,10 @@ export default function F1Homepage() {
           <div className="text-center mb-16">
             <div className="inline-block w-full md:w-auto px-6 py-4 rounded-xl mx-auto mb-4 bg-red-600">
               <h2 className="text-4xl md:text-6xl font-black mb-0 text-white drop-shadow-lg">
-                2024 DRIVERS
+                LEGENDARY DRIVERS
               </h2>
             </div>
-            <p className="text-xl text-gray-400">Meet the gladiators of the grid</p>
+            <p className="text-xl text-gray-400">The icons of Formula 1 racing</p>
           </div>
 
           <DriversGrid />

@@ -113,84 +113,69 @@ export default function F1GoatPoll() {
 
   // Celebration Animation Component
   const CelebrationOverlay = () => (
-    <div className="fixed inset-0 bg-black/90 backdrop-blur-sm z-50 flex items-center justify-center animate-fade-in">
-      {/* Confetti Animation */}
+    <div className="fixed inset-0 bg-black/95 z-50 flex items-center justify-center">
+      {/* Simple Confetti */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(50)].map((_, i) => (
+        {[...Array(30)].map((_, i) => (
           <div
             key={i}
-            className="absolute animate-bounce"
+            className="absolute w-2 h-2 bg-red-500 animate-bounce"
             style={{
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
               animationDelay: `${Math.random() * 2}s`,
-              animationDuration: `${1 + Math.random() * 2}s`
+              animationDuration: `${1 + Math.random() * 1}s`
             }}
-          >
-            <div className={`w-2 h-2 rounded-full ${
-              ['bg-red-500', 'bg-blue-500', 'bg-green-500', 'bg-yellow-500', 'bg-purple-500'][Math.floor(Math.random() * 5)]
-            }`} />
-          </div>
+          />
         ))}
       </div>
 
-      {/* Main Celebration Content */}
-      <div className="relative z-10 text-center space-y-8 animate-scale-in">
-        {/* Trophy Icon */}
+      {/* Main Content */}
+      <div className="relative z-10 text-center space-y-6">
+        {/* Simple Trophy */}
         <div className="animate-bounce">
-          <Trophy className="w-32 h-32 text-yellow-500 mx-auto drop-shadow-2xl" />
+          <Trophy className="w-24 h-24 text-red-500 mx-auto" />
         </div>
 
         {/* Driver Name */}
-        <div className="space-y-4">
-          <h1 className="text-6xl md:text-8xl font-black text-white drop-shadow-2xl animate-pulse">
+        <div className="space-y-3">
+          <h1 className="text-5xl md:text-7xl font-black text-white">
             {votedDriver?.name}
           </h1>
-          <div className="flex items-center justify-center gap-4 text-2xl text-gray-300">
-            <Star className="w-8 h-8 text-yellow-500 animate-spin" />
-            <span>YOUR F1 GOAT!</span>
-            <Star className="w-8 h-8 text-yellow-500 animate-spin" />
-          </div>
+          <p className="text-2xl text-red-500 font-bold">YOUR F1 GOAT!</p>
         </div>
 
-        {/* Driver Stats */}
-        <div className="bg-gradient-to-r from-red-500/20 via-blue-500/20 to-green-500/20 border border-gray-600 rounded-xl p-6 max-w-md mx-auto">
-          <div className="flex items-center justify-center gap-6 text-white">
+        {/* Simple Stats */}
+        <div className="bg-gray-800/50 border border-gray-600 rounded-lg p-4 max-w-sm mx-auto">
+          <div className="flex items-center justify-center gap-4 text-white">
             <div className="text-center">
-              <div className="text-3xl font-bold">🏆</div>
+              <div className="text-2xl">🏆</div>
               <div className="text-sm text-gray-300">{votedDriver?.championships} Titles</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold">📅</div>
+              <div className="text-2xl">📅</div>
               <div className="text-sm text-gray-300">{votedDriver?.era}</div>
             </div>
           </div>
         </div>
 
-        {/* Celebration Message */}
-        <div className="space-y-4">
-          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-            "The greatest driver is not the one who wins the most, but the one who inspires the most."
-          </p>
-          <div className="flex items-center justify-center gap-2 text-yellow-500">
-            <Zap className="w-6 h-6 animate-pulse" />
-            <span className="text-lg font-semibold">Legendary Choice!</span>
-            <Zap className="w-6 h-6 animate-pulse" />
-          </div>
-        </div>
+        {/* Simple Message */}
+        <p className="text-lg text-gray-300 max-w-md mx-auto">
+          Excellent choice! This driver is truly legendary.
+        </p>
 
-        {/* Action Buttons */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+        {/* Simple Buttons */}
+        <div className="flex flex-col sm:flex-row gap-3 justify-center">
           <Button
             onClick={closeCelebration}
-            className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white px-8 py-3 text-lg font-semibold"
+            className="bg-red-600 hover:bg-red-700 text-white px-6 py-2"
           >
             Continue
           </Button>
           <Button
             onClick={resetPoll}
             variant="outline"
-            className="border-gray-600 text-gray-300 hover:bg-gray-700/50 px-8 py-3 text-lg"
+            className="border-gray-600 text-gray-300 hover:bg-gray-700 px-6 py-2"
           >
             Vote Again
           </Button>

@@ -175,7 +175,7 @@ export default function TeamsPage() {
           {teams.map((team, index) => (
             <Card
               key={team.id}
-              className="group bg-gray-900/50 border-gray-800 backdrop-blur-sm cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-xl hover:bg-gray-800/70 animate-fade-in-up"
+              className="team-card group bg-gray-900/50 border-gray-800 backdrop-blur-sm cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-xl hover:bg-gray-800/70 animate-fade-in-up"
               style={{ animationDelay: `${index * 0.2}s` }}
               onClick={() => setSelectedTeam(team)}
             >

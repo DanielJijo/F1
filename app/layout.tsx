@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import './globals.css'
 import PageTransition from "@/components/page-transition";
+import ClientMouseTracker from "@/components/ClientMouseTracker";
 
 export const metadata: Metadata = {
   title: 'F1-x',
@@ -21,6 +22,7 @@ export default function RootLayout({
         <link rel="shortcut icon" href="/favicon.ico" />
       </head>
       <body>
+        <ClientMouseTracker />
         <PageTransition>
           {children}
         </PageTransition>
