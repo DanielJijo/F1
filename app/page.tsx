@@ -8,6 +8,7 @@ import DriversGrid from "./components/drivers-grid"
 import Link from "next/link"
 import AnimatedText from "@/components/AnimatedText"
 import GooeyNav from "@/components/GooeyNav/GooeyNav"
+import TrueFocus from "@/components/TrueFocus/TrueFocus"
 
 export default function F1Homepage() {
   const [showSplash, setShowSplash] = useState(true)
@@ -118,7 +119,14 @@ export default function F1Homepage() {
         {/* Hero Content */}
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-black mb-6 animate-slide-up text-white drop-shadow-xl">
-            <AnimatedText text="F1 IS SPORT, NOT AN ENTERTAINMENT" />
+            <div className="relative flex flex-col gap-2 items-center">
+              <div className="relative">
+                <TrueFocus sentence="F1 IS A SPORT NOT JUST ENTERTAINMENT" animationDuration={0.3} pauseBetweenAnimations={0.3} blurAmount={2} borderColor="red" glowColor="rgba(239,68,68,0.6)" />
+                <div className="absolute inset-0">
+                  <TrueFocus sentence="F1 IS A SPORT NOT JUST ENTERTAINMENT" animationDuration={0.3} pauseBetweenAnimations={0.3} blurAmount={2} borderColor="blue" glowColor="rgba(59,130,246,0.6)" randomMode={true} />
+                </div>
+              </div>
+            </div>
           </h1>
 
           <p className="text-xl md:text-2xl text-gray-200 mb-12 animate-slide-up-delay drop-shadow-lg">Your Unofficial F1 Companion</p>

@@ -23,7 +23,7 @@ export default function RootLayout({
       </head>
       <body>
         <ClientMouseTracker />
-        <PageTransition>
+        <PageTransition skipTransitionFor={["/"]}>
           {children}
         </PageTransition>
       </body>

@@ -6,6 +6,7 @@ import React, { useEffect, useState } from "react"
 
 interface PageTransitionProps {
   children: React.ReactNode
+  skipTransitionFor?: string[]
 }
 
 const STRIPE_DURATION = 0.4; // seconds (medium-fast)
@@ -24,7 +25,7 @@ const F1CarSVG = () => (
   </svg>
 );
 
-export default function PageTransition({ children }: PageTransitionProps) {
+export default function PageTransition({ children, skipTransitionFor = [] }: PageTransitionProps) {
   const pathname = usePathname();
   const [showStripe, setShowStripe] = useState(false);
   const [displayChildren, setDisplayChildren] = useState(children);
@@ -32,9 +33,16 @@ export default function PageTransition({ children }: PageTransitionProps) {
 
   // Detect route change
   useEffect(() => {
+    // If the current pathname is in skipTransitionFor, just swap content instantly
+    if (skipTransitionFor.includes(pathname)) {
+      setDisplayChildren(children);
+      setShowStripe(false);
+      setPendingChildren(null);
+      return;
+    }
     setPendingChildren(children);
     setShowStripe(true);
-  }, [pathname]);
+  }, [pathname, children, skipTransitionFor]);
 
   // After stripe covers, swap content and animate out
   useEffect(() => {

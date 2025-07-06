@@ -13,6 +13,8 @@ interface TrueFocusProps {
   glowColor?: string;
   animationDuration?: number;
   pauseBetweenAnimations?: number;
+  reverseDirection?: boolean;
+  randomMode?: boolean;
 }
 
 interface FocusRect {
@@ -30,6 +32,8 @@ const TrueFocus: React.FC<TrueFocusProps> = ({
   glowColor = "rgba(0, 255, 0, 0.6)",
   animationDuration = 0.5,
   pauseBetweenAnimations = 1,
+  reverseDirection = false,
+  randomMode = false,
 }) => {
   const words = sentence.split(" ");
   const [currentIndex, setCurrentIndex] = useState<number>(0);
@@ -47,14 +51,20 @@ const TrueFocus: React.FC<TrueFocusProps> = ({
     if (!manualMode) {
       const interval = setInterval(
         () => {
-          setCurrentIndex((prev) => (prev + 1) % words.length);
+          if (randomMode) {
+            setCurrentIndex(Math.floor(Math.random() * words.length));
+          } else if (reverseDirection) {
+            setCurrentIndex((prev) => (prev - 1 + words.length) % words.length);
+          } else {
+            setCurrentIndex((prev) => (prev + 1) % words.length);
+          }
         },
         (animationDuration + pauseBetweenAnimations) * 1000,
       );
 
       return () => clearInterval(interval);
     }
-  }, [manualMode, animationDuration, pauseBetweenAnimations, words.length]);
+  }, [manualMode, animationDuration, pauseBetweenAnimations, words.length, reverseDirection, randomMode]);
 
   useEffect(() => {
     if (currentIndex === null || currentIndex === -1) return;
@@ -94,7 +104,9 @@ const TrueFocus: React.FC<TrueFocusProps> = ({
         return (
           <span
             key={index}
-            ref={(el) => (wordRefs.current[index] = el)}
+            ref={(el) => {
+              wordRefs.current[index] = el;
+            }}
             className="relative text-[3rem] font-black cursor-pointer"
             style={
               {
