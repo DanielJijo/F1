@@ -90,6 +90,15 @@ export default function F1Homepage() {
               <GooeyNav items={navItems} />
             </div>
 
+            {/* Under the Hood Button */}
+            <div className="hidden md:block">
+              <a href="/under-the-hood">
+                <li className="py-[0.6em] px-[1em] rounded-full relative cursor-pointer transition-[background-color_color_box-shadow] duration-300 ease shadow-[0_0_0.5px_1.5px_transparent] text-white hover:bg-white hover:text-black">
+                  Under the Hood
+                </li>
+              </a>
+            </div>
+
             {/* Mobile Menu Button */}
             <button className="md:hidden text-white" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -131,14 +140,16 @@ export default function F1Homepage() {
 
           <p className="text-xl md:text-2xl text-gray-200 mb-12 animate-slide-up-delay drop-shadow-lg">Your Unofficial F1 Companion</p>
 
-          <a href="/behind-the-wheels">
-            <Button
-              size="lg"
-              className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white px-12 py-4 text-lg font-semibold rounded-full transition-all duration-300 transform hover:scale-105 animate-slide-up-delay-2 drop-shadow-lg"
-            >
-              Behind the Wheels
-            </Button>
-          </a>
+          <div className="flex gap-4 justify-center">
+            <a href="/behind-the-wheels">
+              <Button
+                size="lg"
+                className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white px-12 py-4 text-lg font-semibold rounded-full transition-all duration-300 transform hover:scale-105 animate-slide-up-delay-2 drop-shadow-lg"
+              >
+                Behind the Wheels
+              </Button>
+            </a>
+          </div>
         </div>
 
         {/* Scroll Indicator */}
