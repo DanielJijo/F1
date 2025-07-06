@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Trophy, Users, CheckCircle, Star, Zap } from "lucide-react"
@@ -65,6 +65,7 @@ export default function F1GoatPoll() {
   const [showCelebration, setShowCelebration] = useState(false)
   const [votedDriver, setVotedDriver] = useState<PollOption | null>(null)
   const [totalVotes, setTotalVotes] = useState(0)
+  const audioRef = useRef<HTMLAudioElement | null>(null)
 
   // Load votes from localStorage on component mount
   useEffect(() => {
@@ -76,6 +77,13 @@ export default function F1GoatPoll() {
       setTotalVotes(parsedVotes.reduce((sum: number, option: PollOption) => sum + option.votes, 0))
     }
   }, [])
+
+  useEffect(() => {
+    if (showCelebration && audioRef.current) {
+      audioRef.current.currentTime = 0;
+      audioRef.current.play();
+    }
+  }, [showCelebration]);
 
   const handleVote = () => {
     if (!selectedOption) return
@@ -113,69 +121,52 @@ export default function F1GoatPoll() {
 
   // Celebration Animation Component
   const CelebrationOverlay = () => (
-    <div className="fixed inset-0 bg-black/95 z-50 flex items-center justify-center">
-      {/* Simple Confetti */}
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
+      <audio ref={audioRef} src="/celebration.mp3" preload="auto" />
+      {/* Subtle Confetti */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(30)].map((_, i) => (
+        {[...Array(12)].map((_, i) => (
           <div
             key={i}
-            className="absolute w-2 h-2 bg-red-500 animate-bounce"
+            className="absolute w-2 h-2 rounded-full bg-gradient-to-br from-red-500 to-yellow-400 animate-bounce"
             style={{
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 2}s`,
-              animationDuration: `${1 + Math.random() * 1}s`
+              animationDelay: `${Math.random() * 1.2}s`,
+              animationDuration: `${0.8 + Math.random() * 0.8}s`
             }}
           />
         ))}
       </div>
-
-      {/* Main Content */}
-      <div className="relative z-10 text-center space-y-6">
-        {/* Simple Trophy */}
+      {/* Modal Content */}
+      <div className="relative z-10 bg-white text-black rounded-2xl shadow-2xl p-8 w-full max-w-md mx-auto flex flex-col items-center space-y-4 border-4 border-red-500">
         <div className="animate-bounce">
-          <Trophy className="w-24 h-24 text-red-500 mx-auto" />
+          <Trophy className="w-16 h-16 text-red-500 mx-auto" />
         </div>
-
-        {/* Driver Name */}
-        <div className="space-y-3">
-          <h1 className="text-5xl md:text-7xl font-black text-white">
-            {votedDriver?.name}
-          </h1>
-          <p className="text-2xl text-red-500 font-bold">YOUR F1 GOAT!</p>
-        </div>
-
-        {/* Simple Stats */}
-        <div className="bg-gray-800/50 border border-gray-600 rounded-lg p-4 max-w-sm mx-auto">
-          <div className="flex items-center justify-center gap-4 text-white">
-            <div className="text-center">
-              <div className="text-2xl">🏆</div>
-              <div className="text-sm text-gray-300">{votedDriver?.championships} Titles</div>
-            </div>
-            <div className="text-center">
-              <div className="text-2xl">📅</div>
-              <div className="text-sm text-gray-300">{votedDriver?.era}</div>
-            </div>
+        <h1 className="text-3xl md:text-4xl font-black text-center">{votedDriver?.name}</h1>
+        <p className="text-lg text-red-500 font-bold text-center">YOUR F1 GOAT!</p>
+        <div className="bg-gray-100 border border-gray-300 rounded-lg p-3 w-full flex items-center justify-center gap-4">
+          <div className="text-center">
+            <div className="text-xl">🏆</div>
+            <div className="text-xs text-gray-700">{votedDriver?.championships} Titles</div>
+          </div>
+          <div className="text-center">
+            <div className="text-xl">📅</div>
+            <div className="text-xs text-gray-700">{votedDriver?.era}</div>
           </div>
         </div>
-
-        {/* Simple Message */}
-        <p className="text-lg text-gray-300 max-w-md mx-auto">
-          Excellent choice! This driver is truly legendary.
-        </p>
-
-        {/* Simple Buttons */}
-        <div className="flex flex-col sm:flex-row gap-3 justify-center">
+        <p className="text-base text-gray-700 text-center">Legendary choice!</p>
+        <div className="flex flex-col sm:flex-row gap-3 justify-center w-full">
           <Button
             onClick={closeCelebration}
-            className="bg-red-600 hover:bg-red-700 text-white px-6 py-2"
+            className="bg-red-600 hover:bg-red-700 text-white px-6 py-2 w-full sm:w-auto"
           >
             Continue
           </Button>
           <Button
             onClick={resetPoll}
             variant="outline"
-            className="border-gray-600 text-gray-300 hover:bg-gray-700 px-6 py-2"
+            className="border-gray-400 text-gray-700 hover:bg-gray-200 px-6 py-2 w-full sm:w-auto"
           >
             Vote Again
           </Button>

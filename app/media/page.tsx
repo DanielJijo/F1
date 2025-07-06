@@ -2,17 +2,9 @@
 
 import Link from "next/link"
 import GooeyNav from "@/components/GooeyNav/GooeyNav"
+import { navItems } from "@/lib/navItems"
 
 export default function MediaPage() {
-  const navItems = [
-    { label: "Home", href: "/" },
-    { label: "Drivers", href: "/drivers" },
-    { label: "Teams", href: "/teams" },
-    { label: "Records", href: "/records" },
-    { label: "Map", href: "/map" },
-    { label: "Media", href: "/media" },
-  ]
-
   return (
     <div className="min-h-screen bg-black text-white">
       {/* Navigation */}

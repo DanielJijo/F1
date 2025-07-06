@@ -8,6 +8,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Trophy, Users, Flag, Clock, Target, Zap, Crown } from "lucide-react"
 import Link from "next/link"
 import GooeyNav from "@/components/GooeyNav/GooeyNav"
+import { navItems } from "@/lib/navItems"
 
 interface Record {
   title: string
@@ -133,15 +134,6 @@ const trackRecords: Record[] = [
 
 export default function RecordsPage() {
   const [activeTab, setActiveTab] = useState("drivers")
-
-  const navItems = [
-    { label: "Home", href: "/" },
-    { label: "Drivers", href: "/drivers" },
-    { label: "Teams", href: "/teams" },
-    { label: "Records", href: "/records" },
-    { label: "Map", href: "/map" },
-    { label: "Media", href: "/media" },
-  ]
 
   const RecordCard = ({ record, index }: { record: Record; index: number }) => (
     <Card

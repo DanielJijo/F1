@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge"
 import { MapPin, Calendar, Clock, Trophy, Zap } from "lucide-react"
 import Link from "next/link"
 import GooeyNav from "@/components/GooeyNav/GooeyNav"
+import { navItems } from "@/lib/navItems"
 
 interface Race {
   id: number
@@ -106,15 +107,6 @@ const races: Race[] = [
 export default function MapPage() {
   const [selectedRace, setSelectedRace] = useState<Race | null>(null)
   const [filter, setFilter] = useState<"all" | "completed" | "upcoming">("all")
-
-  const navItems = [
-    { label: "Home", href: "/" },
-    { label: "Drivers", href: "/drivers" },
-    { label: "Teams", href: "/teams" },
-    { label: "Records", href: "/records" },
-    { label: "Map", href: "/map" },
-    { label: "Media", href: "/media" },
-  ]
 
   const filteredRaces = races.filter((race) => filter === "all" || race.status === filter)
 

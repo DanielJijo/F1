@@ -5,6 +5,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Trophy, Users, Settings } from "lucide-react"
 import Link from "next/link"
 import GooeyNav from "@/components/GooeyNav/GooeyNav"
+import { navItems } from "@/lib/navItems"
 
 interface Team {
   id: number
@@ -128,15 +129,6 @@ const teams: Team[] = [
 
 export default function TeamsPage() {
   const [selectedTeam, setSelectedTeam] = useState<Team | null>(null)
-
-  const navItems = [
-    { label: "Home", href: "/" },
-    { label: "Drivers", href: "/drivers" },
-    { label: "Teams", href: "/teams" },
-    { label: "Records", href: "/records" },
-    { label: "Map", href: "/map" },
-    { label: "Media", href: "/media" },
-  ]
 
   return (
     <div className="min-h-screen bg-black text-white">

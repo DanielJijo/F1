@@ -9,6 +9,7 @@ import Link from "next/link"
 import AnimatedText from "@/components/AnimatedText"
 import GooeyNav from "@/components/GooeyNav/GooeyNav"
 import TrueFocus from "@/components/TrueFocus/TrueFocus"
+import { navItems } from "@/lib/navItems"
 
 export default function F1Homepage() {
   const [showSplash, setShowSplash] = useState(true)
@@ -45,15 +46,6 @@ export default function F1Homepage() {
     },
   ]
 
-  const navItems = [
-    { label: "Home", href: "/" },
-    { label: "Drivers", href: "/drivers" },
-    { label: "Teams", href: "/teams" },
-    { label: "Records", href: "/records" },
-    { label: "Map", href: "/map" },
-    { label: "Media", href: "/media" },
-  ]
-
   if (showSplash) {
     return (
       <div className="fixed inset-0 bg-black flex items-center justify-center z-50">
@@ -88,15 +80,6 @@ export default function F1Homepage() {
             {/* Desktop Navigation - GooeyNav */}
             <div className="hidden md:flex items-center justify-center flex-1">
               <GooeyNav items={navItems} />
-            </div>
-
-            {/* Under the Hood Button */}
-            <div className="hidden md:block">
-              <a href="/under-the-hood">
-                <li className="py-[0.6em] px-[1em] rounded-full relative cursor-pointer transition-[background-color_color_box-shadow] duration-300 ease shadow-[0_0_0.5px_1.5px_transparent] text-white hover:bg-white hover:text-black">
-                  Under the Hood
-                </li>
-              </a>
             </div>
 
             {/* Mobile Menu Button */}

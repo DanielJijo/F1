@@ -8,6 +8,7 @@ import { Search, Trophy, Zap, Target, Flag } from "lucide-react"
 import Link from "next/link"
 import F1GoatPoll from "@/components/f1-goat-poll"
 import GooeyNav from "@/components/GooeyNav/GooeyNav"
+import { navItems } from "@/lib/navItems"
 
 interface Driver {
   id: number
@@ -190,15 +191,6 @@ export default function DriversPage() {
   const [selectedTeam, setSelectedTeam] = useState("all")
 
   const teams = Array.from(new Set(drivers.map((d) => d.team)))
-
-  const navItems = [
-    { label: "Home", href: "/" },
-    { label: "Drivers", href: "/drivers" },
-    { label: "Teams", href: "/teams" },
-    { label: "Records", href: "/records" },
-    { label: "Map", href: "/map" },
-    { label: "Media", href: "/media" },
-  ]
 
   const filteredDrivers = drivers.filter((driver) => {
     const matchesSearch = driver.name.toLowerCase().includes(searchTerm.toLowerCase())

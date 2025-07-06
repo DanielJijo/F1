@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 import TiltedCard from "@/components/TiltedCard/TiltedCard";
+import GooeyNav from "@/components/GooeyNav/GooeyNav";
+import { navItems } from "@/lib/navItems";
 
 export default function UnderTheHoodPage() {
   return (
@@ -15,6 +17,9 @@ export default function UnderTheHoodPage() {
               <span className="text-blue-500">1</span>
               <span className="text-green-500">-X</span>
             </Link>
+            <div className="hidden md:flex items-center justify-center flex-1">
+              <GooeyNav items={navItems} />
+            </div>
           </div>
         </div>
       </nav>
