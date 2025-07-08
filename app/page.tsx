@@ -11,6 +11,8 @@ import GooeyNav from "@/components/GooeyNav/GooeyNav"
 import TrueFocus from "@/components/TrueFocus/TrueFocus"
 import { navItems } from "@/lib/navItems"
 import drivers from "@/lib/drivers";
+import ProfileCard from "@/components/ProfileCard/ProfileCard";
+import GlitchText from "@/components/GlitchText/GlitchText";
 
 export default function F1Homepage() {
   const [showSplash, setShowSplash] = useState(true)
@@ -165,22 +167,18 @@ export default function F1Homepage() {
         </div>
       </section>
 
-      {/* Drivers Section */}
-      <section className="py-20 px-4 bg-gradient-to-b from-black to-gray-900">
-        <div className="container mx-auto max-w-7xl">
-          <div className="text-center mb-16">
-            <div className="inline-block w-full md:w-auto px-6 py-4 rounded-xl mx-auto mb-4 bg-red-600">
-              <h2 className="text-4xl md:text-6xl font-black mb-0 text-white drop-shadow-lg">
-                LEGENDARY DRIVERS
-              </h2>
-            </div>
-            <p className="text-xl text-gray-400">The icons of Formula 1 racing</p>
-          </div>
-
-          {console.log("drivers:", drivers)}
-          <DriversGrid drivers={drivers} />
-        </div>
+      {/* Profile Card Section */}
+      <section className="flex justify-center py-12">
+        <ProfileCard 
+          avatarUrl="/drivers/daniel-jijo.jpg" 
+          name="DANIEL JIJO" 
+          handle="danieljijo"
+          contactText="Contact Me"
+          onContactClick={() => window.open("https://github.com/DanielJijo", "_blank")}
+        />
       </section>
+
+      {/* Drivers Section */}
     </div>
   )
 }
