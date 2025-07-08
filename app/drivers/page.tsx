@@ -12,6 +12,7 @@ import { navItems } from "@/lib/navItems"
 
 interface Driver {
   id: number
+  slug: string
   name: string
   team: string
   teamColor: string
@@ -33,6 +34,7 @@ interface Driver {
 const drivers: Driver[] = [
   {
     id: 1,
+    slug: "verstappen",
     name: "Max Verstappen",
     team: "Red Bull Racing",
     teamColor: "from-blue-600 to-blue-800",
@@ -52,6 +54,7 @@ const drivers: Driver[] = [
   },
   {
     id: 2,
+    slug: "perez",
     name: "Sergio Pérez",
     team: "Red Bull Racing",
     teamColor: "from-blue-600 to-blue-800",
@@ -71,6 +74,7 @@ const drivers: Driver[] = [
   },
   {
     id: 3,
+    slug: "hamilton",
     name: "Lewis Hamilton",
     team: "Mercedes",
     teamColor: "from-green-500 to-green-700",
@@ -90,6 +94,7 @@ const drivers: Driver[] = [
   },
   {
     id: 4,
+    slug: "russell",
     name: "George Russell",
     team: "Mercedes",
     teamColor: "from-green-500 to-green-700",
@@ -109,6 +114,7 @@ const drivers: Driver[] = [
   },
   {
     id: 5,
+    slug: "leclerc",
     name: "Charles Leclerc",
     team: "Ferrari",
     teamColor: "from-red-600 to-red-800",
@@ -128,6 +134,7 @@ const drivers: Driver[] = [
   },
   {
     id: 6,
+    slug: "sainz",
     name: "Carlos Sainz",
     team: "Ferrari",
     teamColor: "from-red-600 to-red-800",
@@ -147,6 +154,7 @@ const drivers: Driver[] = [
   },
   {
     id: 7,
+    slug: "norris",
     name: "Lando Norris",
     team: "McLaren",
     teamColor: "from-orange-500 to-orange-700",
@@ -166,6 +174,7 @@ const drivers: Driver[] = [
   },
   {
     id: 8,
+    slug: "piastri",
     name: "Oscar Piastri",
     team: "McLaren",
     teamColor: "from-orange-500 to-orange-700",
@@ -179,6 +188,86 @@ const drivers: Driver[] = [
     points: 237,
     position: 8,
     fastestLaps: 1,
+    photo: "/placeholder.svg?height=400&width=300",
+    helmet: "/placeholder.svg?height=200&width=200",
+    car: "/placeholder.svg?height=300&width=500",
+  },
+  {
+    id: 9,
+    slug: "alonso",
+    name: "Fernando Alonso",
+    team: "Aston Martin",
+    teamColor: "from-blue-600 to-blue-800",
+    number: "14",
+    nationality: "Spain",
+    flag: "🇪🇸",
+    age: 42,
+    championships: 2,
+    raceWins: 32,
+    podiums: 102,
+    points: 1055,
+    position: 9,
+    fastestLaps: 12,
+    photo: "/placeholder.svg?height=400&width=300",
+    helmet: "/placeholder.svg?height=200&width=200",
+    car: "/placeholder.svg?height=300&width=500",
+  },
+  {
+    id: 10,
+    slug: "schumacher",
+    name: "Michael Schumacher",
+    team: "Mercedes",
+    teamColor: "from-green-500 to-green-700",
+    number: "7",
+    nationality: "Germany",
+    flag: "🇩🇪",
+    age: 55,
+    championships: 7,
+    raceWins: 91,
+    podiums: 155,
+    points: 1365,
+    position: 10,
+    fastestLaps: 13,
+    photo: "/placeholder.svg?height=400&width=300",
+    helmet: "/placeholder.svg?height=200&width=200",
+    car: "/placeholder.svg?height=300&width=500",
+  },
+  {
+    id: 11,
+    slug: "senna",
+    name: "Ayrton Senna",
+    team: "McLaren",
+    teamColor: "from-blue-600 to-blue-800",
+    number: "11",
+    nationality: "Brazil",
+    flag: "🇧🇷",
+    age: 34,
+    championships: 3,
+    raceWins: 41,
+    podiums: 80,
+    points: 1054,
+    position: 11,
+    fastestLaps: 13,
+    photo: "/placeholder.svg?height=400&width=300",
+    helmet: "/placeholder.svg?height=200&width=200",
+    car: "/placeholder.svg?height=300&width=500",
+  },
+  {
+    id: 12,
+    slug: "vettel",
+    name: "Sebastian Vettel",
+    team: "Aston Martin",
+    teamColor: "from-blue-600 to-blue-800",
+    number: "5",
+    nationality: "Germany",
+    flag: "🇩🇪",
+    age: 35,
+    championships: 4,
+    raceWins: 53,
+    podiums: 122,
+    points: 1225,
+    position: 12,
+    fastestLaps: 11,
     photo: "/placeholder.svg?height=400&width=300",
     helmet: "/placeholder.svg?height=200&width=200",
     car: "/placeholder.svg?height=300&width=500",
@@ -275,9 +364,14 @@ export default function DriversPage() {
                 {/* Driver Photo */}
                 <div className="relative h-64 overflow-hidden">
                   <img
-                    src={driver.photo || "/placeholder.svg"}
+                    src={`/drivers/${driver.slug}.jpg`}
                     alt={driver.name}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    style={
+                      (driver.slug === "lando-norris" || driver.slug === "carlos-sainz")
+                        ? { objectPosition: "center 60%" }
+                        : {}
+                    }
                   />
                   <div
                     className={`absolute inset-0 bg-gradient-to-t ${driver.teamColor} opacity-20 group-hover:opacity-40 transition-opacity duration-300`}

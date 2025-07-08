@@ -56,7 +56,7 @@ const TrueFocus: React.FC<TrueFocusProps> = ({
           } else if (reverseDirection) {
             setCurrentIndex((prev) => (prev - 1 + words.length) % words.length);
           } else {
-            setCurrentIndex((prev) => (prev + 1) % words.length);
+          setCurrentIndex((prev) => (prev + 1) % words.length);
           }
         },
         (animationDuration + pauseBetweenAnimations) * 1000,
