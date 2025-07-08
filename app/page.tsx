@@ -10,6 +10,7 @@ import AnimatedText from "@/components/AnimatedText"
 import GooeyNav from "@/components/GooeyNav/GooeyNav"
 import TrueFocus from "@/components/TrueFocus/TrueFocus"
 import { navItems } from "@/lib/navItems"
+import drivers from "@/lib/drivers";
 
 export default function F1Homepage() {
   const [showSplash, setShowSplash] = useState(true)
@@ -176,7 +177,8 @@ export default function F1Homepage() {
             <p className="text-xl text-gray-400">The icons of Formula 1 racing</p>
           </div>
 
-          <DriversGrid />
+          {console.log("drivers:", drivers)}
+          <DriversGrid drivers={drivers} />
         </div>
       </section>
     </div>
