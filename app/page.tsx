@@ -13,6 +13,7 @@ import { navItems } from "@/lib/navItems"
 import drivers from "@/lib/drivers";
 import ProfileCard from "@/components/ProfileCard/ProfileCard";
 import GlitchText from "@/components/GlitchText/GlitchText";
+import { Drawer, DrawerTrigger, DrawerContent, DrawerClose } from "@/components/ui/drawer"
 
 export default function F1Homepage() {
   const [showSplash, setShowSplash] = useState(true)
@@ -62,13 +63,7 @@ export default function F1Homepage() {
 
   return (
     <div
-      className="min-h-screen bg-black text-white overflow-x-hidden relative"
-      style={{
-        backgroundImage: "linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('/backgrounds/redbull.jpg')",
-        backgroundSize: typeof window !== 'undefined' && window.innerWidth < 768 ? 'cover' : '110%',
-        backgroundPosition: typeof window !== 'undefined' && window.innerWidth < 768 ? 'center top' : 'center top -180px',
-        backgroundRepeat: "no-repeat",
-      }}
+      className="min-h-screen bg-black text-white overflow-x-hidden relative bg-[url('/backgrounds/redbull.jpg')] bg-cover bg-top md:bg-[length:110%] md:bg-[center_top_-180px] bg-no-repeat"
     >
       {/* Sticky Navigation */}
       <nav className="sticky top-0 z-50 bg-black/80 backdrop-blur-md border-b border-gray-800">
@@ -85,27 +80,43 @@ export default function F1Homepage() {
               <GooeyNav items={navItems} />
             </div>
 
-            {/* Mobile Menu Button */}
-            <button className="md:hidden text-white" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </button>
-          </div>
-
-          {/* Mobile Navigation */}
-          {mobileMenuOpen && (
-            <div className="md:hidden py-4 border-t border-gray-800">
-              {navItems.map((item) => (
-                <Link
-                  key={item.label}
-                  href={item.href}
-                  className="block py-2 text-gray-300 hover:text-white transition-colors duration-300"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  {item.label}
-                </Link>
-              ))}
+            {/* Mobile Dock Trigger */}
+            <div className="md:hidden">
+              <Drawer>
+                <DrawerTrigger asChild>
+                  <button className="text-white">
+                    <Menu className="w-6 h-6" />
+                  </button>
+                </DrawerTrigger>
+                <DrawerContent className="pb-8 pt-4 px-4 bg-black border-t border-gray-800">
+                  <div className="flex justify-between items-center mb-4">
+                    <div className="text-2xl font-bold">
+                      <span className="text-red-500">F</span>
+                      <span className="text-blue-500">1</span>
+                      <span className="text-green-500">-X</span>
+                    </div>
+                    <DrawerClose asChild>
+                      <button className="text-white">
+                        <X className="w-6 h-6" />
+                      </button>
+                    </DrawerClose>
+                  </div>
+                  <div className="flex flex-col gap-2">
+                    {navItems.map((item) => (
+                      <DrawerClose asChild key={item.label}>
+                        <Link
+                          href={item.href}
+                          className="block py-3 px-2 text-lg text-gray-300 hover:text-white rounded transition-colors duration-200"
+                        >
+                          {item.label}
+                        </Link>
+                      </DrawerClose>
+                    ))}
+                  </div>
+                </DrawerContent>
+              </Drawer>
             </div>
-          )}
+          </div>
         </div>
       </nav>
 

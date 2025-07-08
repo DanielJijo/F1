@@ -4,6 +4,7 @@
 
 import React, { useEffect, useRef, useCallback, useMemo } from "react";
 import "./ProfileCard.css";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 interface ProfileCardProps {
   avatarUrl?: string;
@@ -75,6 +76,7 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
 }) => {
   const wrapRef = useRef<HTMLDivElement>(null);
   const cardRef = useRef<HTMLDivElement>(null);
+  const isMobile = useIsMobile();
 
   const animationHandlers = useMemo(() => {
     if (!enableTilt) return null;
@@ -211,17 +213,46 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
 
     if (!card || !wrap) return;
 
+    // --- Mouse (Desktop) ---
     const pointerMoveHandler = handlePointerMove as EventListener;
     const pointerEnterHandler = handlePointerEnter as EventListener;
     const pointerLeaveHandler = handlePointerLeave as EventListener;
 
-    card.addEventListener("pointerenter", pointerEnterHandler);
-    card.addEventListener("pointermove", pointerMoveHandler);
-    card.addEventListener("pointerleave", pointerLeaveHandler);
+    if (!isMobile) {
+      card.addEventListener("pointerenter", pointerEnterHandler);
+      card.addEventListener("pointermove", pointerMoveHandler);
+      card.addEventListener("pointerleave", pointerLeaveHandler);
+    }
 
+    // --- Gyro (Mobile) ---
+    let lastBeta = 0;
+    let lastGamma = 0;
+    function handleOrientation(event: DeviceOrientationEvent) {
+      if (!card || !wrap) return;
+      // gamma: left-right [-90,90], beta: front-back [-180,180]
+      // We'll map gamma to X, beta to Y
+      // Clamp and normalize values for a natural tilt
+      const gamma = event.gamma ?? 0; // left-right
+      const beta = event.beta ?? 0;   // front-back
+      lastBeta = beta;
+      lastGamma = gamma;
+      // Map gamma [-45,45] to percentX [0,100], beta [0,90] to percentY [0,100]
+      const percentX = ((gamma + 45) / 90) * 100; // gamma -45 (left) to 45 (right)
+      const percentY = ((beta) / 90) * 100;       // beta 0 (flat) to 90 (upright)
+      // Convert percent to px offset relative to card size
+      const width = card.clientWidth;
+      const height = card.clientHeight;
+      const offsetX = (percentX / 100) * width;
+      const offsetY = (percentY / 100) * height;
+      animationHandlers.updateCardTransform(offsetX, offsetY, card, wrap);
+    }
+    if (isMobile && window.DeviceOrientationEvent) {
+      window.addEventListener("deviceorientation", handleOrientation, true);
+    }
+
+    // Initial animation
     const initialX = wrap.clientWidth - ANIMATION_CONFIG.INITIAL_X_OFFSET;
     const initialY = ANIMATION_CONFIG.INITIAL_Y_OFFSET;
-
     animationHandlers.updateCardTransform(initialX, initialY, card, wrap);
     animationHandlers.createSmoothAnimation(
       ANIMATION_CONFIG.INITIAL_DURATION,
@@ -232,9 +263,14 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
     );
 
     return () => {
-      card.removeEventListener("pointerenter", pointerEnterHandler);
-      card.removeEventListener("pointermove", pointerMoveHandler);
-      card.removeEventListener("pointerleave", pointerLeaveHandler);
+      if (!isMobile) {
+        card.removeEventListener("pointerenter", pointerEnterHandler);
+        card.removeEventListener("pointermove", pointerMoveHandler);
+        card.removeEventListener("pointerleave", pointerLeaveHandler);
+      }
+      if (isMobile && window.DeviceOrientationEvent) {
+        window.removeEventListener("deviceorientation", handleOrientation, true);
+      }
       animationHandlers.cancelAnimation();
     };
   }, [
@@ -243,6 +279,7 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
     handlePointerMove,
     handlePointerEnter,
     handlePointerLeave,
+    isMobile,
   ]);
 
   const cardStyle = useMemo(
