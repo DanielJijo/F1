@@ -66,7 +66,7 @@ export default function PageTransition({ children, skipTransitionFor = [] }: Pag
             exit={{ x: "100%" }}
             transition={{ duration: STRIPE_DURATION, ease: "easeInOut" }}
             className="fixed inset-0 z-[9999] flex items-center justify-center pointer-events-none"
-            style={{ background: "transparent" }}
+            style={{ background: "black" }}
           >
             <div className="relative w-full h-32 md:h-40 flex items-center">
               {/* Red stripe */}

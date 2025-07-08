@@ -42,55 +42,79 @@ export default function MediaPage() {
         <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
           {/* Video 1 */}
           <div className="bg-gray-900/50 border-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105">
-            <div className="aspect-video">
-              <iframe
-                className="w-full h-full"
-                src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-                title="Best Onboard Overtake"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              ></iframe>
-            </div>
+            <a
+              href="https://youtu.be/Z_LmiQlT9oE"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block aspect-video bg-gray-800 relative"
+            >
+              <img
+                src="https://img.youtube.com/vi/Z_LmiQlT9oE/hqdefault.jpg"
+                alt="Hamilton’s Furious Comeback: Overtaking Legends in São Paulo🔥"
+                className="w-full h-full object-cover transition hover:opacity-80"
+              />
+              <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none">
+                <svg width="80" height="56" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect width="512" height="512" rx="115" fill="#FF0000" />
+                  <polygon points="205,154 205,358 371,256" fill="#fff" />
+                </svg>
+              </span>
+            </a>
             <div className="p-6">
-              <h3 className="text-xl font-bold text-white mb-2">Best Onboard Overtake</h3>
-              <p className="text-gray-400">Experience the thrill of F1's most spectacular overtakes from the driver's perspective.</p>
+              <h3 className="text-xl font-bold text-white mb-2">Hamilton’s Furious Comeback: Overtaking Legends in São Paulo🔥</h3>
+              <p className="text-gray-400">From the back of the grid to pure dominance—Hamilton rewrites history with every overtake!</p>
             </div>
           </div>
 
           {/* Video 2 */}
           <div className="bg-gray-900/50 border-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105">
-            <div className="aspect-video">
-              <iframe
-                className="w-full h-full"
-                src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-                title="Top 10 Moments – 2024"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              ></iframe>
-            </div>
+            <a
+              href="https://youtu.be/auXfAHHNSFo"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block aspect-video bg-gray-800 relative"
+            >
+              <img
+                src="https://img.youtube.com/vi/auXfAHHNSFo/hqdefault.jpg"
+                alt="Senna’s Monaco Masterclass: Lightning‑Fast 1990 Charge ⚡️"
+                className="w-full h-full object-cover transition hover:opacity-80"
+              />
+              <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none">
+                <svg width="80" height="56" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect width="512" height="512" rx="115" fill="#FF0000" />
+                  <polygon points="205,154 205,358 371,256" fill="#fff" />
+                </svg>
+              </span>
+            </a>
             <div className="p-6">
-              <h3 className="text-xl font-bold text-white mb-2">Top 10 Moments – 2024</h3>
-              <p className="text-gray-400">Relive the most unforgettable moments from the 2024 Formula 1 season.</p>
+              <h3 className="text-xl font-bold text-white mb-2">Senna’s Monaco Masterclass: Lightning‑Fast 1990 Charge ⚡️</h3>
+              <p className="text-gray-400">Pure Ayrton magic as he unleashes unmatched speed and precision around Monaco’s tight streets—legendary F1 on‑board footage capturing true greatness.</p>
             </div>
           </div>
 
           {/* Video 3 */}
           <div className="bg-gray-900/50 border-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 lg:col-span-2 xl:col-span-1">
-            <div className="aspect-video">
-              <iframe
-                className="w-full h-full"
-                src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-                title="F1 Pit Stops Explained"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              ></iframe>
-            </div>
+            <a
+              href="https://youtu.be/daWr9xnkKS4"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block aspect-video bg-gray-800 relative"
+            >
+              <img
+                src="https://img.youtube.com/vi/daWr9xnkKS4/hqdefault.jpg"
+                alt="Epic Drift Frenzy: Precision Meets Mayhem 🚗🔥"
+                className="w-full h-full object-cover transition hover:opacity-80"
+              />
+              <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none">
+                <svg width="80" height="56" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect width="512" height="512" rx="115" fill="#FF0000" />
+                  <polygon points="205,154 205,358 371,256" fill="#fff" />
+                </svg>
+              </span>
+            </a>
             <div className="p-6">
-              <h3 className="text-xl font-bold text-white mb-2">F1 Pit Stops Explained</h3>
-              <p className="text-gray-400">Discover the science and precision behind Formula 1's lightning-fast pit stops.</p>
+              <h3 className="text-xl font-bold text-white mb-2">Epic Drift Frenzy: Precision Meets Mayhem 🚗🔥</h3>
+              <p className="text-gray-400">Heart-pounding on‑track action as drivers unleash smoke‑filled drifts with breathtaking skill and intensity!</p>
             </div>
           </div>
         </div>
