@@ -2,7 +2,6 @@ import type { Metadata } from 'next'
 import './globals.css'
 import PageTransition from "@/components/page-transition";
 import ClientMouseTracker from "@/components/ClientMouseTracker";
-import { useIsMobile } from "@/hooks/use-mobile";
 
 export const metadata: Metadata = {
   title: 'F1-x',
@@ -15,7 +14,6 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  const isMobile = typeof window !== 'undefined' ? useIsMobile() : false;
   return (
     <html lang="en">
       <head>
@@ -24,7 +22,7 @@ export default function RootLayout({
         <link rel="shortcut icon" href="/favicon.ico" />
       </head>
       <body>
-        {!isMobile && <ClientMouseTracker />}
+        <ClientMouseTracker />
         <PageTransition skipTransitionFor={["/"]}>
           {children}
         </PageTransition>
