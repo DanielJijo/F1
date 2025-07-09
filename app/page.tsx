@@ -98,20 +98,20 @@ export default function F1Homepage() {
                     <DrawerClose asChild>
                       <button className="text-white">
                         <X className="w-6 h-6" />
-                      </button>
+            </button>
                     </DrawerClose>
-                  </div>
+          </div>
                   <div className="flex flex-col gap-2">
-                    {navItems.map((item) => (
+              {navItems.map((item) => (
                       <DrawerClose asChild key={item.label}>
-                        <Link
-                          href={item.href}
+                <Link
+                  href={item.href}
                           className="block py-3 px-2 text-lg text-gray-300 hover:text-white rounded transition-colors duration-200"
-                        >
-                          {item.label}
-                        </Link>
+                >
+                  {item.label}
+                </Link>
                       </DrawerClose>
-                    ))}
+              ))}
                   </div>
                 </DrawerContent>
               </Drawer>

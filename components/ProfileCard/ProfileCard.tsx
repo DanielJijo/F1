@@ -219,9 +219,9 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
     const pointerLeaveHandler = handlePointerLeave as EventListener;
 
     if (!isMobile) {
-      card.addEventListener("pointerenter", pointerEnterHandler);
-      card.addEventListener("pointermove", pointerMoveHandler);
-      card.addEventListener("pointerleave", pointerLeaveHandler);
+    card.addEventListener("pointerenter", pointerEnterHandler);
+    card.addEventListener("pointermove", pointerMoveHandler);
+    card.addEventListener("pointerleave", pointerLeaveHandler);
     }
 
     // --- Gyro (Mobile) ---
@@ -264,9 +264,9 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
 
     return () => {
       if (!isMobile) {
-        card.removeEventListener("pointerenter", pointerEnterHandler);
-        card.removeEventListener("pointermove", pointerMoveHandler);
-        card.removeEventListener("pointerleave", pointerLeaveHandler);
+      card.removeEventListener("pointerenter", pointerEnterHandler);
+      card.removeEventListener("pointermove", pointerMoveHandler);
+      card.removeEventListener("pointerleave", pointerLeaveHandler);
       }
       if (isMobile && window.DeviceOrientationEvent) {
         window.removeEventListener("deviceorientation", handleOrientation, true);

@@ -48,9 +48,9 @@ const drivers: Driver[] = [
     points: 575,
     position: 1,
     fastestLaps: 29,
-    photo: "/placeholder.svg?height=400&width=300",
+    photo: "/drivers/max-verstappen.jpg",
     helmet: "/placeholder.svg?height=200&width=200",
-    car: "/placeholder.svg?height=300&width=500",
+    car: "/car/max-verstappen-car.jpg",
   },
   {
     id: 2,
@@ -68,9 +68,9 @@ const drivers: Driver[] = [
     points: 285,
     position: 2,
     fastestLaps: 3,
-    photo: "/placeholder.svg?height=400&width=300",
+    photo: "/drivers/sergio-perez.jpg",
     helmet: "/placeholder.svg?height=200&width=200",
-    car: "/placeholder.svg?height=300&width=500",
+    car: "/car/sergio-perez-car.jpg",
   },
   {
     id: 3,
@@ -88,9 +88,9 @@ const drivers: Driver[] = [
     points: 234,
     position: 3,
     fastestLaps: 33,
-    photo: "/placeholder.svg?height=400&width=300",
+    photo: "/drivers/hamilton.jpg",
     helmet: "/placeholder.svg?height=200&width=200",
-    car: "/placeholder.svg?height=300&width=500",
+    car: "/car/hamilton-car.jpg",
   },
   {
     id: 4,
@@ -108,9 +108,9 @@ const drivers: Driver[] = [
     points: 192,
     position: 4,
     fastestLaps: 2,
-    photo: "/placeholder.svg?height=400&width=300",
+    photo: "/drivers/russell.jpg",
     helmet: "/placeholder.svg?height=200&width=200",
-    car: "/placeholder.svg?height=300&width=500",
+    car: "/car/russell-car.jpg",
   },
   {
     id: 5,
@@ -128,9 +128,9 @@ const drivers: Driver[] = [
     points: 308,
     position: 5,
     fastestLaps: 9,
-    photo: "/placeholder.svg?height=400&width=300",
+    photo: "/drivers/leclerc.jpg",
     helmet: "/placeholder.svg?height=200&width=200",
-    car: "/placeholder.svg?height=300&width=500",
+    car: "/car/leclerc-car.jpg",
   },
   {
     id: 6,
@@ -148,9 +148,9 @@ const drivers: Driver[] = [
     points: 244,
     position: 6,
     fastestLaps: 3,
-    photo: "/placeholder.svg?height=400&width=300",
+    photo: "/drivers/sainz.jpg",
     helmet: "/placeholder.svg?height=200&width=200",
-    car: "/placeholder.svg?height=300&width=500",
+    car: "/car/sainz-car.jpg",
   },
   {
     id: 7,
@@ -168,9 +168,9 @@ const drivers: Driver[] = [
     points: 279,
     position: 7,
     fastestLaps: 4,
-    photo: "/placeholder.svg?height=400&width=300",
+    photo: "/drivers/norris.jpg",
     helmet: "/placeholder.svg?height=200&width=200",
-    car: "/placeholder.svg?height=300&width=500",
+    car: "/car/norris-car.jpg",
   },
   {
     id: 8,
@@ -188,9 +188,9 @@ const drivers: Driver[] = [
     points: 237,
     position: 8,
     fastestLaps: 1,
-    photo: "/placeholder.svg?height=400&width=300",
+    photo: "/drivers/oscar-piastri.jpg",
     helmet: "/placeholder.svg?height=200&width=200",
-    car: "/placeholder.svg?height=300&width=500",
+    car: "/car/oscar-piastri-car.jpg",
   },
   {
     id: 9,
@@ -208,9 +208,9 @@ const drivers: Driver[] = [
     points: 1055,
     position: 9,
     fastestLaps: 12,
-    photo: "/placeholder.svg?height=400&width=300",
+    photo: "/drivers/alonso.jpg",
     helmet: "/placeholder.svg?height=200&width=200",
-    car: "/placeholder.svg?height=300&width=500",
+    car: "/car/alonso-car.jpg",
   },
   {
     id: 10,
@@ -228,9 +228,9 @@ const drivers: Driver[] = [
     points: 1365,
     position: 10,
     fastestLaps: 13,
-    photo: "/placeholder.svg?height=400&width=300",
+    photo: "/drivers/schumacher.jpg",
     helmet: "/placeholder.svg?height=200&width=200",
-    car: "/placeholder.svg?height=300&width=500",
+    car: "/car/schumacher-car.jpg",
   },
   {
     id: 11,
@@ -248,9 +248,9 @@ const drivers: Driver[] = [
     points: 1054,
     position: 11,
     fastestLaps: 13,
-    photo: "/placeholder.svg?height=400&width=300",
+    photo: "/drivers/senna.jpg",
     helmet: "/placeholder.svg?height=200&width=200",
-    car: "/placeholder.svg?height=300&width=500",
+    car: "/car/senna-car.jpg",
   },
   {
     id: 12,
@@ -268,9 +268,9 @@ const drivers: Driver[] = [
     points: 1225,
     position: 12,
     fastestLaps: 11,
-    photo: "/placeholder.svg?height=400&width=300",
+    photo: "/drivers/vettel.jpg",
     helmet: "/placeholder.svg?height=200&width=200",
-    car: "/placeholder.svg?height=300&width=500",
+    car: "/car/vettel-car.jpg",
   },
 ]
 
@@ -364,7 +364,7 @@ export default function DriversPage() {
                 {/* Driver Photo */}
                 <div className="relative h-64 overflow-hidden">
                   <img
-                    src={`/drivers/${driver.slug}.jpg`}
+                    src={driver.photo}
                     alt={driver.name}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                     style={
@@ -444,7 +444,6 @@ export default function DriversPage() {
                     alt={`${selectedDriver.team} car`}
                     className="w-full h-full object-cover"
                   />
-                  <div className={`absolute inset-0 bg-gradient-to-t ${selectedDriver.teamColor} opacity-60`} />
                   <div className="absolute bottom-6 left-6 text-white">
                     <div className="flex items-center gap-4 mb-2">
                       <h2 className="text-4xl font-black">{selectedDriver.name}</h2>
