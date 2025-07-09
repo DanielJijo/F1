@@ -133,7 +133,7 @@ const teams: Team[] = [
     logo: "/teams/astonmartin.png",
     car: "/placeholder.svg?height=300&width=600",
     drivers: [
-      { name: "Fernando Alonso", number: "14", photo: "/placeholder.svg?height=200&width=150" },
+      { name: "Fernando Alonso", number: "14", photo: "/drivers/alonso.jpg" },
       { name: "Lance Stroll", number: "18", photo: "/placeholder.svg?height=200&width=150" },
     ],
     engine: "Mercedes-AMG",
@@ -248,8 +248,8 @@ const teams: Team[] = [
     logo: "/teams/alphatauri.png",
     car: "/placeholder.svg?height=300&width=600",
     drivers: [
-      { name: "Yuki Tsunoda", number: "22", photo: "/placeholder.svg?height=200&width=150" },
-      { name: "Daniel Ricciardo", number: "3", photo: "/placeholder.svg?height=200&width=150" },
+      { name: "Yuki Tsunoda", number: "22", photo: "/drivers/yuki-tsunoda.jpg" },
+      { name: "Daniel Ricciardo", number: "3", photo: "/drivers/daniel-jijo.jpg" },
     ],
     engine: "Honda RBPT",
     powerUnit: "1.6L V6 Turbo Hybrid",
