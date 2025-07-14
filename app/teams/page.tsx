@@ -131,7 +131,7 @@ const teams: Team[] = [
     fullName: "Aston Martin Aramco Cognizant F1 Team",
     color: "from-green-700 to-green-900",
     logo: "/teams/astonmartin.png",
-    car: "/placeholder.svg?height=300&width=600",
+    car: "/teams/astonmartin-car.jpg",
     drivers: [
       { name: "Fernando Alonso", number: "14", photo: "/drivers/alonso.jpg" },
       { name: "Lance Stroll", number: "18", photo: "/placeholder.svg?height=200&width=150" },
@@ -154,7 +154,7 @@ const teams: Team[] = [
     fullName: "BWT Alpine F1 Team",
     color: "from-blue-400 to-blue-700",
     logo: "/teams/alpine.jpg",
-    car: "/placeholder.svg?height=300&width=600",
+    car: "/teams/alpine-car.jpg",
     drivers: [
       { name: "Esteban Ocon", number: "31", photo: "/placeholder.svg?height=200&width=150" },
       { name: "Pierre Gasly", number: "10", photo: "/placeholder.svg?height=200&width=150" },
@@ -177,7 +177,7 @@ const teams: Team[] = [
     fullName: "Williams Racing",
     color: "from-blue-300 to-blue-500",
     logo: "/teams/williams.jpg",
-    car: "/placeholder.svg?height=300&width=600",
+    car: "/teams/williams-car.jpg",
     drivers: [
       { name: "Alex Albon", number: "23", photo: "/placeholder.svg?height=200&width=150" },
       { name: "Logan Sargeant", number: "2", photo: "/placeholder.svg?height=200&width=150" },
@@ -200,7 +200,7 @@ const teams: Team[] = [
     fullName: "MoneyGram Haas F1 Team",
     color: "from-gray-700 to-gray-900",
     logo: "/teams/haas.jpg",
-    car: "/placeholder.svg?height=300&width=600",
+    car: "/teams/haas-car.jpg",
     drivers: [
       { name: "Kevin Magnussen", number: "20", photo: "/placeholder.svg?height=200&width=150" },
       { name: "Nico Hülkenberg", number: "27", photo: "/placeholder.svg?height=200&width=150" },
@@ -223,7 +223,7 @@ const teams: Team[] = [
     fullName: "Stake F1 Team Kick Sauber",
     color: "from-green-400 to-green-600",
     logo: "/teams/sauber.png",
-    car: "/placeholder.svg?height=300&width=600",
+    car: "/teams/sauber-car.jpg",
     drivers: [
       { name: "Valtteri Bottas", number: "77", photo: "/placeholder.svg?height=200&width=150" },
       { name: "Zhou Guanyu", number: "24", photo: "/placeholder.svg?height=200&width=150" },
@@ -246,7 +246,7 @@ const teams: Team[] = [
     fullName: "Visa Cash App RB F1 Team",
     color: "from-indigo-500 to-indigo-700",
     logo: "/teams/alphatauri.png",
-    car: "/placeholder.svg?height=300&width=600",
+    car: "/teams/alphatauri-car.jpg",
     drivers: [
       { name: "Yuki Tsunoda", number: "22", photo: "/drivers/yuki-tsunoda.jpg" },
       { name: "Daniel Ricciardo", number: "3", photo: "/drivers/daniel-jijo.jpg" },
